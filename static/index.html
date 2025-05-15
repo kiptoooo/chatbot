@@ -6,149 +6,228 @@
   <title>Zendawa Assistant</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f1fdf3;
       margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4fef4;
     }
 
-    .chat-container {
-      width: 95%;
-      max-width: 600px;
-      margin-top: 2rem;
-      background: #ffffff;
+    #chat-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #2c7a36;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #chat-container {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      width: 350px;
+      height: 500px;
+      background-color: white;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 128, 0, 0.15);
-      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      overflow: hidden;
+      border: 2px solid #2c7a36;
+      z-index: 999;
+    }
+
+    #chat-header {
+      background-color: #2c7a36;
+      color: white;
+      padding: 16px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .message {
-      margin: 0.8rem 0;
-      padding: 0.8rem;
-      border-radius: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      max-width: 80%;
       line-height: 1.5;
     }
 
-    .user-message {
-      background-color: #e6f9ec;
-      text-align: right;
+    .user {
+      background-color: #e6f4ea;
+      align-self: flex-end;
     }
 
-    .bot-message {
-      background-color: #f0f0f0;
-      text-align: left;
+    .bot {
+      background-color: #edfbea;
+      align-self: flex-start;
     }
 
-    .chat-input {
+    .loading {
+      width: 30px;
       display: flex;
-      margin-top: 1rem;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    input[type="text"] {
-      flex-grow: 1;
-      padding: 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    button {
-      background-color: #28a745;
-      border: none;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      margin-left: 0.5rem;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .loader {
-      display: none;
-      margin-top: 0.5rem;
-      text-align: left;
-    }
-
-    .loader span {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      margin-right: 4px;
-      background-color: #28a745;
+    .loading span {
+      width: 6px;
+      height: 6px;
+      background-color: #2c7a36;
       border-radius: 50%;
-      animation: bounce 1s infinite ease-in-out alternate;
+      animation: bounce 1.2s infinite ease-in-out both;
     }
 
-    .loader span:nth-child(2) {
+    .loading span:nth-child(2) {
       animation-delay: 0.2s;
     }
 
-    .loader span:nth-child(3) {
+    .loading span:nth-child(3) {
       animation-delay: 0.4s;
     }
 
     @keyframes bounce {
-      to {
-        transform: translateY(-10px);
-      }
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
+
+    #chat-form {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid #ddd;
+    }
+
+    #chat-input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    #chat-send {
+      background-color: #2c7a36;
+      color: white;
+      border: none;
+      margin-left: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #chat-controls {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      background: #f9f9f9;
+    }
+
+    #chat-controls button {
+      background: none;
+      border: none;
+      color: #2c7a36;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="chat-container">
-    <div id="chat-box"></div>
+  <button id="chat-toggle">💬</button>
 
-    <div class="loader" id="loader">
-      <span></span><span></span><span></span>
+  <div id="chat-container">
+    <div id="chat-header">Zendawa Assistant</div>
+    <div id="chat-messages"></div>
+    <div id="chat-controls">
+      <button id="clear-btn">Clear</button>
+      <button id="reset-btn">Reset</button>
     </div>
-
-    <form class="chat-input" id="chat-form">
-      <input type="text" id="user-input" placeholder="Ask a question..." required />
-      <button type="submit">Send</button>
+    <form id="chat-form">
+      <input type="text" id="chat-input" placeholder="Ask a question..." required />
+      <button type="submit" id="chat-send">Send</button>
     </form>
   </div>
 
   <script>
-    const form = document.getElementById("chat-form");
-    const userInput = document.getElementById("user-input");
-    const chatBox = document.getElementById("chat-box");
-    const loader = document.getElementById("loader");
+    const chatToggle = document.getElementById("chat-toggle");
+    const chatContainer = document.getElementById("chat-container");
+    const chatMessages = document.getElementById("chat-messages");
+    const chatForm = document.getElementById("chat-form");
+    const chatInput = document.getElementById("chat-input");
+    const clearBtn = document.getElementById("clear-btn");
+    const resetBtn = document.getElementById("reset-btn");
 
-    form.addEventListener("submit", async (e) => {
+    let history = [];
+
+    chatToggle.onclick = () => {
+      chatContainer.style.display = chatContainer.style.display === "none" ? "flex" : "none";
+    };
+
+    clearBtn.onclick = () => {
+      chatMessages.innerHTML = "";
+      history = [];
+    };
+
+    resetBtn.onclick = () => {
+      chatMessages.innerHTML = "";
+      history = [];
+      alert("Session reset.");
+    };
+
+    chatForm.onsubmit = async (e) => {
       e.preventDefault();
+      const userMsg = chatInput.value.trim();
+      if (!userMsg) return;
 
-      const message = userInput.value.trim();
-      if (!message) return;
+      const userDiv = document.createElement("div");
+      userDiv.className = "message user";
+      userDiv.textContent = userMsg;
+      chatMessages.appendChild(userDiv);
+      chatInput.value = "";
 
-      appendMessage("You", message, "user-message");
-      userInput.value = "";
-      loader.style.display = "block";
+      const loadingDiv = document.createElement("div");
+      loadingDiv.className = "message bot loading";
+      loadingDiv.innerHTML = '<span></span><span></span><span></span>';
+      chatMessages.appendChild(loadingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
 
       try {
         const res = await fetch("/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: [{ role: "user", content: message }] })
+          body: JSON.stringify({ messages: [...history, { role: "user", content: userMsg }] })
         });
         const data = await res.json();
-        appendMessage("Zendawa Assistant", data.reply, "bot-message");
-      } catch (err) {
-        appendMessage("Zendawa Assistant", "Oops! Something went wrong.", "bot-message");
-      } finally {
-        loader.style.display = "none";
-      }
-    });
+        history.push({ role: "user", content: userMsg }, { role: "assistant", content: data.reply });
 
-    function appendMessage(sender, text, className) {
-      const div = document.createElement("div");
-      div.className = `message ${className}`;
-      div.innerHTML = `<strong>${sender}:</strong> ${text}`;
-      chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
+        loadingDiv.remove();
+        const botDiv = document.createElement("div");
+        botDiv.className = "message bot";
+        botDiv.textContent = data.reply;
+        chatMessages.appendChild(botDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      } catch (err) {
+        loadingDiv.remove();
+        const errDiv = document.createElement("div");
+        errDiv.className = "message bot";
+        errDiv.textContent = "Sorry, there was an error. Please try again.";
+        chatMessages.appendChild(errDiv);
+      }
+    };
   </script>
 </body>
 </html>
