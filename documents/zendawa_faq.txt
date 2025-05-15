@@ -282,3 +282,69 @@ A: We offer 48-hour returns for unopened medications with valid receipt.
 
 Q: Does zendawa sell medical equipment?
 A: Yes, we offer various home medical equipment through partner pharmacies.
+
+Q: What is Zendawa?
+A: Zendawa is a health-tech start-up based in Nakuru, Kenya. It provides digital healthcare solutions including pharmacy management, telemedicine, and healthcare logistics.
+
+Q: What services does Zendawa offer?
+A: Zendawa offers a wide range of services including telemedicine, digital appointment management, working capital access, digital pharmacy suite, product onboarding, and data sharing tools for practitioners.
+
+Q: How does Zendawa's end-user marketplace work?
+A: Zendawa provides a platform where patients can order prescription and non-prescription products. Orders are matched using machine learning to the nearest pharmacy, and delivered through partner couriers.
+
+Q: How do pharmacies access working capital on Zendawa?
+A: Zendawa uses AI-driven credit scoring based on pharmacy data to help them access loans through lending partners.
+
+Q: How does Zendawa help with inventory and cash flow management?
+A: Pharmacies using Zendawa's suite can track online/offline sales, monitor stock levels, and manage financial performance efficiently.
+
+Q: What is Zendawa's telemedicine feature?
+A: Medical practitioners use Zendawa to provide remote consultations, share records, and manage virtual appointments securely.
+
+Q: How does appointment booking work on Zendawa?
+A: Patients can book in-person or virtual consultations directly from their homes, and practitioners manage their schedule via Zendawa's suite.
+
+Q: Can I return a product ordered via Zendawa?
+A: Yes. Zendawa allows product returns based on the return policy outlined in your order. Check your profile for the return process.
+
+Q: Who can partner with Zendawa?
+A: Pharmacies, medical practitioners, and businesses interested in healthcare collaboration can join Zendawa by filling out a partnership form.
+
+Q: What is the Pharmacy Product Onboarding Form?
+A: This form allows pharmacies to list unique products not already available on the platform, helping them expand reach and product variety.
+
+Q: How do medical practitioners benefit from Zendawa?
+A: Practitioners use Zendawa to manage patient data, book appointments, offer telemedicine services, and collaborate with other healthcare providers.
+
+Q: Is Zendawa available outside Kenya?
+A: Currently, Zendawa operates primarily in Kenya but plans to expand to other regions soon.
+
+Q: How secure is patient data on Zendawa?
+A: Zendawa prioritizes data privacy and uses end-to-end encryption and secure systems to protect all patient and pharmacy data.
+
+Q: Where is Zendawa located?
+A: 2nd floor Karakana Building, Nakuru, Kenya.
+
+Q: What is Zendawa’s mission?
+A: To transform African healthcare access through innovative digital platforms and reduce inefficiencies in pharmacy operations.
+
+Q: How can I contact Zendawa?
+A: Email: info@zendawa.africa | Phone: 0742782395, 0709605551 | Website: https://zendawa.africa
+
+Q: What departments are listed on Zendawa?
+A: Departments include Clinicians, Dermatologists, Gynecologists, Orthopedic Surgeons, Pediatricians, Physicians, and Urologists.
+
+Q: What is Zendawa's approach to data sharing?
+A: Zendawa allows consensual sharing of medical records among healthcare providers to ensure collaborative and informed care.
+
+Q: What kind of content is in Zendawa's Resource Library?
+A: The Resource Library includes topics like Africa’s healthcare renewal, health systems, and the future of telemedicine.
+
+Q: What is Zental.AI by Zendawa?
+A: Zental.AI is Zendawa’s initiative to reduce operational inefficiencies in pharmacies by automating tasks and improving output.
+
+Q: How does Zendawa ensure medicine quality?
+A: Zendawa partners with licensed pharmacies and conducts quality audits to ensure authenticity and safety of medicines.
+
+Q: Can Zendawa be used in emergencies?
+A: Zendawa is for non-emergency services only. For urgent medical care, contact your local emergency provider.
