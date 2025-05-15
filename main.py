@@ -60,12 +60,15 @@ async def chat(chat_req: ChatRequest):
     best_idx = int(similarities.argmax())
     matched_question = questions[best_idx]
     matched_answer = answers[best_idx]
-
+         
     system_prompt = (
-        f"You are Zendawa Assistant, a smart chatbot for Kenya's telepharmacy platform Zendawa.\n\n"
-        f"Relevant knowledge:\nQ: {matched_question}\nA: {matched_answer}\n\n"
-        f"If the user goes off-topic, gently redirect them back to Zendawa’s services."
-    )
+    "You are Zendawa Assistant, an AI trained specifically to answer only questions about Zendawa — a Kenyan telepharmacy platform.\n"
+    "Zendawa offers services like drug ordering, pharmacy onboarding, teleconsultations, and healthcare logistics.\n\n"
+    "If the user's message is unrelated to healthcare or Zendawa services (e.g., cars, sports, programming), kindly respond:\n"
+    "“I'm here to assist only with Zendawa's telepharmacy services. Could you please ask something related to healthcare or our platform?”\n\n"
+    f"Here’s the most relevant FAQ info to help:\nQ: {matched_question}\nA: {matched_answer}"
+                  )
+
 
     prompt_messages = [
         {"role": "system", "content": system_prompt},
