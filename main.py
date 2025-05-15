@@ -39,13 +39,33 @@ async def chat(chat_req: ChatRequest):
         "stream": False
     }
 
-    try:
-        response = requests.post("https://openrouter.ai/api/v1/chat/completions", json=payload, headers=headers)
-        response.raise_for_status()
-        data = response.json()
-        return {"reply": data["choices"][0]["message"]["content"]}
-    except Exception as e:
-        raise HTTPException(status_code=502, detail=str(e))
+  try:
+    response = requests.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        json=payload,
+        headers=headers
+    )
+    response.raise_for_status()  # Raises an HTTPError for bad status codes (e.g., 401, 500)
+
+    data = response.json()
+    print("✅ OPENROUTER SUCCESS:", data)  # Log entire response
+    return {"reply": data["choices"][0]["message"]["content"]}
+
+except requests.exceptions.HTTPError as http_err:
+    print("❌ HTTP Error:", response.status_code)
+    print("❌ Error Response:", response.text)
+    raise HTTPException(status_code=502, detail=f"HTTP error: {http_err}")
+
+except requests.exceptions.RequestException as req_err:
+    print("❌ Request Error:", req_err)
+    raise HTTPException(status_code=502, detail=f"Request error: {req_err}")
+
+except Exception as e:
+    print("❌ Unexpected Error:", str(e))
+    raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
     
 from fastapi.staticfiles import StaticFiles
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
+
+
