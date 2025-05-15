@@ -90,3 +90,9 @@ async def chat(chat_req: ChatRequest):
     except Exception as e:
         print("❌ Error:", e)
         raise HTTPException(status_code=502, detail="OpenRouter response failed.")
+
+from fastapi.responses import FileResponse
+
+@app.get("/")
+def serve_index():
+    return FileResponse("static/index.html")
