@@ -15,7 +15,8 @@ app.add_middleware(
 )
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-MODEL = "mistralai/mixtral-8x7b-instruct:free"
+MODEL = "openchat/openchat-7b:free"
+
 
 class Message(BaseModel):
     role: str
