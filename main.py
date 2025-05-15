@@ -1,16 +1,15 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, HTMLResponse
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from markdown import markdown
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse, FileResponse
 from pathlib import Path
 import os, requests
 
-# === FastAPI Setup ===
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,13 +19,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# === Model Setup ===
+TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY")
+MODEL = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 
-# === Model Config ===
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-MODEL = "qwen/qwen3-1.7b:free"
-
-# === Data Model ===
 class Message(BaseModel):
     role: str
     content: str
@@ -34,13 +30,11 @@ class Message(BaseModel):
 class ChatRequest(BaseModel):
     messages: list[Message]
 
-# === Load FAQ Text File ===
+# === Load FAQ Data ===
 faq_path = "documents/zendawa_faq.txt"
-
 with open(faq_path, "r", encoding="utf-8") as f:
     raw_faq_blocks = f.read().strip().split("\n\n")
 
-# Extract Q&A pairs
 faq_pairs = []
 for block in raw_faq_blocks:
     lines = block.strip().split("\n")
@@ -54,52 +48,50 @@ answers = [a for q, a in faq_pairs]
 vectorizer = TfidfVectorizer().fit(questions)
 question_vectors = vectorizer.transform(questions)
 
-# === Main Chat Endpoint ===
 @app.post("/chat")
 async def chat(chat_req: ChatRequest):
-    if not OPENROUTER_API_KEY:
-        raise HTTPException(status_code=500, detail="Missing OpenRouter API key")
+    if not TOGETHER_API_KEY:
+        raise HTTPException(status_code=500, detail="Missing Together API key")
 
     user_msg = chat_req.messages[-1].content.strip()
+    if not user_msg:
+        raise HTTPException(status_code=400, detail="Empty user message")
+
     user_vector = vectorizer.transform([user_msg])
     similarities = cosine_similarity(user_vector, question_vectors)[0]
-
     best_idx = int(similarities.argmax())
     best_match = questions[best_idx]
     matched_answer = answers[best_idx]
-    similarity_score = similarities[best_idx]
 
-    if similarity_score < 0.3:
-        return {"reply": "I’m trained to assist with Zendawa-related questions only. 😊"}
-
-    # Construct context-enhanced prompt
     context = f"Relevant Zendawa info:\nQ: {best_match}\nA: {matched_answer}"
     prompt_messages = [
         {"role": "system", "content": context},
-        *[msg.dict() for msg in chat_req.messages]
+        *[{"role": m.role, "content": m.content} for m in chat_req.messages]
     ]
 
     payload = {
         "model": MODEL,
         "messages": prompt_messages,
-        "stream": False
+        "temperature": 0.7
     }
 
     headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Authorization": f"Bearer {TOGETHER_API_KEY}",
         "Content-Type": "application/json"
     }
 
     try:
-        response = requests.post("https://openrouter.ai/api/v1/chat/completions", json=payload, headers=headers)
+        response = requests.post("https://api.together.xyz/v1/chat/completions", json=payload, headers=headers)
         response.raise_for_status()
         data = response.json()
-        clean_html = markdown(data["choices"][0]["message"]["content"])
-        return {"reply": clean_html}
+        if "choices" in data:
+            return {"reply": data["choices"][0]["message"]["content"]}
+        else:
+            raise HTTPException(status_code=502, detail="Invalid response format from Together.ai")
     except Exception as e:
         print("❌ Error:", e)
-        raise HTTPException(status_code=502, detail="OpenRouter response failed.")
+        raise HTTPException(status_code=502, detail="Together.ai request failed.")
 
 @app.get("/", response_class=HTMLResponse)
-def get_home():
+def get_ui():
     return Path("static/index.html").read_text()
