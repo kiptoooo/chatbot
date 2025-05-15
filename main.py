@@ -1,10 +1,10 @@
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse, FileResponse
 from pathlib import Path
 import os, requests
 
@@ -50,8 +50,8 @@ question_vectors = vectorizer.transform(questions)
 
 @app.post("/chat")
 async def chat(chat_req: ChatRequest):
-    if not OPENROUTER_API_KEY:
-        raise HTTPException(status_code=500, detail="Missing OpenRouter API key")
+    if not TOGETHER_API_KEY:
+        raise HTTPException(status_code=500, detail="Missing Together.ai API key")
 
     user_msg = chat_req.messages[-1].content.strip()
     user_vector = vectorizer.transform([user_msg])
@@ -60,17 +60,13 @@ async def chat(chat_req: ChatRequest):
     best_idx = int(similarities.argmax())
     matched_question = questions[best_idx]
     matched_answer = answers[best_idx]
-    similarity_score = similarities[best_idx]
 
-    # Inject context clearly and strongly
     system_prompt = (
-        f"You are Zendawa Assistant, a helpful and knowledgeable assistant for the telepharmacy platform Zendawa in Kenya.\n\n"
-        f"Use this relevant FAQ information to guide your answer:\n"
-        f"Q: {matched_question}\nA: {matched_answer}\n\n"
-        f"If the user asks something unrelated, politely redirect them back to Zendawa services."
+        f"You are Zendawa Assistant, a smart chatbot for Kenya's telepharmacy platform Zendawa.\n\n"
+        f"Relevant knowledge:\nQ: {matched_question}\nA: {matched_answer}\n\n"
+        f"If the user goes off-topic, gently redirect them back to Zendawa’s services."
     )
 
-    # Final message list
     prompt_messages = [
         {"role": "system", "content": system_prompt},
         *[msg.dict() for msg in chat_req.messages]
@@ -78,24 +74,23 @@ async def chat(chat_req: ChatRequest):
 
     payload = {
         "model": MODEL,
-        "messages": prompt_messages,
-        "stream": False
+        "messages": prompt_messages
     }
 
     headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Authorization": f"Bearer {TOGETHER_API_KEY}",
         "Content-Type": "application/json"
     }
 
     try:
-        res = requests.post("https://openrouter.ai/api/v1/chat/completions", json=payload, headers=headers)
-        res.raise_for_status()
-        data = res.json()
-        reply = data.get("choices", [{}])[0].get("message", {}).get("content", "Sorry, I don't have that information.")
+        response = requests.post("https://api.together.xyz/v1/chat/completions", json=payload, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        reply = data.get("choices", [{}])[0].get("message", {}).get("content", "Sorry, I don't have that info.")
         return {"reply": reply}
     except Exception as e:
         print("❌ Error:", e)
-        return {"reply": "Sorry, I could not retrieve a response at the moment. Please try again later."}
+        return {"reply": "Sorry, I could not retrieve a response. Please try again later."}
 
 @app.get("/", response_class=HTMLResponse)
 def get_ui():
