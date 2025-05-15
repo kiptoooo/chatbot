@@ -24,6 +24,7 @@
       font-size: 28px;
       cursor: pointer;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 999;
     }
 
     #chat-container {
@@ -32,7 +33,8 @@
       position: fixed;
       bottom: 100px;
       right: 24px;
-      width: 350px;
+      width: 90%;
+      max-width: 370px;
       height: 500px;
       background-color: white;
       border-radius: 12px;
@@ -63,8 +65,9 @@
     .message {
       padding: 12px;
       border-radius: 8px;
-      max-width: 80%;
+      max-width: 85%;
       line-height: 1.5;
+      word-wrap: break-word;
     }
 
     .user {
@@ -109,6 +112,7 @@
       display: flex;
       padding: 12px;
       border-top: 1px solid #ddd;
+      background: #fdfdfd;
     }
 
     #chat-input {
@@ -144,7 +148,25 @@
       cursor: pointer;
       font-weight: bold;
     }
+
+    a {
+      color: #2c7a36;
+      text-decoration: underline;
+    }
+
+    strong {
+      color: #1e4024;
+    }
   </style>
+  <script>
+    function formatMarkdown(text) {
+      return text
+        .replace(/### (.*?)\n/g, '<h4>$1</h4>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>')
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+    }
+  </script>
 </head>
 <body>
   <button id="chat-toggle">💬</button>
@@ -206,6 +228,7 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
 
       try {
+        await new Promise(r => setTimeout(r, 300)); // simulate thinking
         const res = await fetch("/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -217,7 +240,7 @@
         loadingDiv.remove();
         const botDiv = document.createElement("div");
         botDiv.className = "message bot";
-        botDiv.textContent = data.reply;
+        botDiv.innerHTML = formatMarkdown(data.reply);
         chatMessages.appendChild(botDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
       } catch (err) {
