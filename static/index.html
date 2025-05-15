@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zendawa Assistant</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4fef4;
     }
-
     #chat-toggle {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 20px;
+      right: 20px;
       background-color: #2c7a36;
       color: white;
       border: none;
@@ -23,27 +22,25 @@
       height: 60px;
       font-size: 28px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
     }
-
     #chat-container {
       display: none;
       flex-direction: column;
       position: fixed;
       bottom: 100px;
-      right: 24px;
+      right: 20px;
       width: 90%;
-      max-width: 370px;
-      height: 500px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      overflow: hidden;
+      max-width: 380px;
+      height: 540px;
+      background: white;
+      border-radius: 16px;
       border: 2px solid #2c7a36;
-      z-index: 999;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 9998;
+      overflow: hidden;
     }
-
     #chat-header {
       background-color: #2c7a36;
       color: white;
@@ -52,7 +49,6 @@
       font-weight: bold;
       text-align: center;
     }
-
     #chat-messages {
       flex: 1;
       padding: 16px;
@@ -60,48 +56,33 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      font-size: 15px;
     }
-
     .message {
       padding: 12px;
       border-radius: 8px;
-      max-width: 85%;
-      line-height: 1.5;
+      max-width: 80%;
       word-wrap: break-word;
     }
-
     .user {
       background-color: #e6f4ea;
       align-self: flex-end;
     }
-
     .bot {
       background-color: #edfbea;
       align-self: flex-start;
     }
-
-    .loading {
-      width: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
     .loading span {
       width: 6px;
       height: 6px;
       background-color: #2c7a36;
       border-radius: 50%;
       animation: bounce 1.2s infinite ease-in-out both;
+      display: inline-block;
+      margin-right: 3px;
     }
-
-    .loading span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .loading span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
+    .loading span:nth-child(2) { animation-delay: 0.2s; }
+    .loading span:nth-child(3) { animation-delay: 0.4s; }
 
     @keyframes bounce {
       0%, 80%, 100% { transform: scale(0); }
@@ -112,16 +93,13 @@
       display: flex;
       padding: 12px;
       border-top: 1px solid #ddd;
-      background: #fdfdfd;
     }
-
     #chat-input {
       flex: 1;
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
-
     #chat-send {
       background-color: #2c7a36;
       color: white;
@@ -131,16 +109,14 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
     #chat-controls {
       display: flex;
       justify-content: space-between;
       padding: 8px 12px;
-      border-top: 1px solid #ddd;
-      font-size: 14px;
+      border-top: 1px solid #eee;
       background: #f9f9f9;
+      font-size: 14px;
     }
-
     #chat-controls button {
       background: none;
       border: none;
@@ -148,25 +124,7 @@
       cursor: pointer;
       font-weight: bold;
     }
-
-    a {
-      color: #2c7a36;
-      text-decoration: underline;
-    }
-
-    strong {
-      color: #1e4024;
-    }
   </style>
-  <script>
-    function formatMarkdown(text) {
-      return text
-        .replace(/### (.*?)\n/g, '<h4>$1</h4>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\n/g, '<br>')
-        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
-    }
-  </script>
 </head>
 <body>
   <button id="chat-toggle">💬</button>
@@ -184,73 +142,70 @@
     </form>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
-    const chatToggle = document.getElementById("chat-toggle");
-    const chatContainer = document.getElementById("chat-container");
-    const chatMessages = document.getElementById("chat-messages");
-    const chatForm = document.getElementById("chat-form");
-    const chatInput = document.getElementById("chat-input");
-    const clearBtn = document.getElementById("clear-btn");
-    const resetBtn = document.getElementById("reset-btn");
+    const toggle = document.getElementById("chat-toggle");
+    const container = document.getElementById("chat-container");
+    const messages = document.getElementById("chat-messages");
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("chat-input");
+    const clear = document.getElementById("clear-btn");
+    const reset = document.getElementById("reset-btn");
 
     let history = [];
 
-    chatToggle.onclick = () => {
-      chatContainer.style.display = chatContainer.style.display === "none" ? "flex" : "none";
+    toggle.onclick = () => {
+      container.style.display = container.style.display === "none" ? "flex" : "none";
     };
 
-    clearBtn.onclick = () => {
-      chatMessages.innerHTML = "";
+    clear.onclick = () => {
+      messages.innerHTML = "";
       history = [];
     };
 
-    resetBtn.onclick = () => {
-      chatMessages.innerHTML = "";
+    reset.onclick = () => {
+      messages.innerHTML = "";
       history = [];
       alert("Session reset.");
     };
 
-    chatForm.onsubmit = async (e) => {
+    form.onsubmit = async (e) => {
       e.preventDefault();
-      const userMsg = chatInput.value.trim();
-      if (!userMsg) return;
+      const text = input.value.trim();
+      if (!text) return;
 
-      const userDiv = document.createElement("div");
-      userDiv.className = "message user";
-      userDiv.textContent = userMsg;
-      chatMessages.appendChild(userDiv);
-      chatInput.value = "";
+      addMessage("user", text);
+      input.value = "";
 
-      const loadingDiv = document.createElement("div");
-      loadingDiv.className = "message bot loading";
-      loadingDiv.innerHTML = '<span></span><span></span><span></span>';
-      chatMessages.appendChild(loadingDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      const loader = document.createElement("div");
+      loader.className = "message bot loading";
+      loader.innerHTML = "<span></span><span></span><span></span>";
+      messages.appendChild(loader);
+      messages.scrollTop = messages.scrollHeight;
 
       try {
-        await new Promise(r => setTimeout(r, 300)); // simulate thinking
         const res = await fetch("/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: [...history, { role: "user", content: userMsg }] })
+          body: JSON.stringify({ messages: [...history, { role: "user", content: text }] })
         });
         const data = await res.json();
-        history.push({ role: "user", content: userMsg }, { role: "assistant", content: data.reply });
-
-        loadingDiv.remove();
-        const botDiv = document.createElement("div");
-        botDiv.className = "message bot";
-        botDiv.innerHTML = formatMarkdown(data.reply);
-        chatMessages.appendChild(botDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      } catch (err) {
-        loadingDiv.remove();
-        const errDiv = document.createElement("div");
-        errDiv.className = "message bot";
-        errDiv.textContent = "Sorry, there was an error. Please try again.";
-        chatMessages.appendChild(errDiv);
+        history.push({ role: "user", content: text }, { role: "assistant", content: data.reply });
+        loader.remove();
+        addMessage("bot", data.reply);
+      } catch {
+        loader.remove();
+        addMessage("bot", "❌ Oops! Something went wrong.");
       }
     };
+
+    function addMessage(role, content) {
+      const div = document.createElement("div");
+      div.className = `message ${role}`;
+      div.innerHTML = marked.parse(content);
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
   </script>
 </body>
 </html>
