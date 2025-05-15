@@ -50,47 +50,52 @@ question_vectors = vectorizer.transform(questions)
 
 @app.post("/chat")
 async def chat(chat_req: ChatRequest):
-    if not TOGETHER_API_KEY:
-        raise HTTPException(status_code=500, detail="Missing Together API key")
+    if not OPENROUTER_API_KEY:
+        raise HTTPException(status_code=500, detail="Missing OpenRouter API key")
 
     user_msg = chat_req.messages[-1].content.strip()
-    if not user_msg:
-        raise HTTPException(status_code=400, detail="Empty user message")
-
     user_vector = vectorizer.transform([user_msg])
     similarities = cosine_similarity(user_vector, question_vectors)[0]
-    best_idx = int(similarities.argmax())
-    best_match = questions[best_idx]
-    matched_answer = answers[best_idx]
 
-    context = f"Relevant Zendawa info:\nQ: {best_match}\nA: {matched_answer}"
+    best_idx = int(similarities.argmax())
+    matched_question = questions[best_idx]
+    matched_answer = answers[best_idx]
+    similarity_score = similarities[best_idx]
+
+    # Inject context clearly and strongly
+    system_prompt = (
+        f"You are Zendawa Assistant, a helpful and knowledgeable assistant for the telepharmacy platform Zendawa in Kenya.\n\n"
+        f"Use this relevant FAQ information to guide your answer:\n"
+        f"Q: {matched_question}\nA: {matched_answer}\n\n"
+        f"If the user asks something unrelated, politely redirect them back to Zendawa services."
+    )
+
+    # Final message list
     prompt_messages = [
-        {"role": "system", "content": context},
-        *[{"role": m.role, "content": m.content} for m in chat_req.messages]
+        {"role": "system", "content": system_prompt},
+        *[msg.dict() for msg in chat_req.messages]
     ]
 
     payload = {
         "model": MODEL,
         "messages": prompt_messages,
-        "temperature": 0.7
+        "stream": False
     }
 
     headers = {
-        "Authorization": f"Bearer {TOGETHER_API_KEY}",
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json"
     }
 
     try:
-        response = requests.post("https://api.together.xyz/v1/chat/completions", json=payload, headers=headers)
-        response.raise_for_status()
-        data = response.json()
-        if "choices" in data:
-            return {"reply": data["choices"][0]["message"]["content"]}
-        else:
-            raise HTTPException(status_code=502, detail="Invalid response format from Together.ai")
+        res = requests.post("https://openrouter.ai/api/v1/chat/completions", json=payload, headers=headers)
+        res.raise_for_status()
+        data = res.json()
+        reply = data.get("choices", [{}])[0].get("message", {}).get("content", "Sorry, I don't have that information.")
+        return {"reply": reply}
     except Exception as e:
         print("❌ Error:", e)
-        raise HTTPException(status_code=502, detail="Together.ai request failed.")
+        return {"reply": "Sorry, I could not retrieve a response at the moment. Please try again later."}
 
 @app.get("/", response_class=HTMLResponse)
 def get_ui():
