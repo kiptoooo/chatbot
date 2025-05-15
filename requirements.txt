@@ -2,5 +2,4 @@ fastapi
 uvicorn
 requests
 python-multipart
-chromadb
-tiktoken
+scikit-learn
