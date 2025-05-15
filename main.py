@@ -15,7 +15,8 @@ app.add_middleware(
 )
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-MODEL = "Qwen3 4B (free)"
+MODEL = "openchat/openchat-7b:free"
+
 
 
 class Message(BaseModel):
