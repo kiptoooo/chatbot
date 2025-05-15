@@ -102,3 +102,14 @@ from fastapi.responses import FileResponse
 @app.get("/")
 def serve_index():
     return FileResponse("static/index.html")
+
+
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/", response_class=HTMLResponse)
+def get_home():
+    return Path("static/index.html").read_text()
