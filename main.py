@@ -1,18 +1,16 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from markdown import markdown
+from pathlib import Path
 import os, requests
 
 # === FastAPI Setup ===
 app = FastAPI()
-
-from fastapi.staticfiles import StaticFiles
-
-app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,6 +19,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # === Model Config ===
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -49,7 +49,6 @@ for block in raw_faq_blocks:
     if q and a:
         faq_pairs.append((q.strip(), a.strip()))
 
-# TF-IDF vectorization
 questions = [q for q, a in faq_pairs]
 answers = [a for q, a in faq_pairs]
 vectorizer = TfidfVectorizer().fit(questions)
@@ -69,6 +68,9 @@ async def chat(chat_req: ChatRequest):
     best_match = questions[best_idx]
     matched_answer = answers[best_idx]
     similarity_score = similarities[best_idx]
+
+    if similarity_score < 0.3:
+        return {"reply": "I’m trained to assist with Zendawa-related questions only. 😊"}
 
     # Construct context-enhanced prompt
     context = f"Relevant Zendawa info:\nQ: {best_match}\nA: {matched_answer}"
@@ -92,23 +94,11 @@ async def chat(chat_req: ChatRequest):
         response = requests.post("https://openrouter.ai/api/v1/chat/completions", json=payload, headers=headers)
         response.raise_for_status()
         data = response.json()
-        return {"reply": data["choices"][0]["message"]["content"]}
+        clean_html = markdown(data["choices"][0]["message"]["content"])
+        return {"reply": clean_html}
     except Exception as e:
         print("❌ Error:", e)
         raise HTTPException(status_code=502, detail="OpenRouter response failed.")
-
-from fastapi.responses import FileResponse
-
-@app.get("/")
-def serve_index():
-    return FileResponse("static/index.html")
-
-
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from pathlib import Path
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 def get_home():
