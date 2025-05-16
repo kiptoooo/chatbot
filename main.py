@@ -66,11 +66,13 @@ async def chat(chat_req: ChatRequest):
     matched_answer = answers[best_idx]
          
     system_prompt = (
-    f"You are Zendawa Assistant, a helpful and knowledgeable assistant for the telepharmacy platform Zendawa in Kenya.\n\n"
-    f"Use this relevant FAQ information to guide your answer:\n"
-    f"Q: {matched_question}\nA: {matched_answer}\n\n"
-    f"If the user asks something unrelated, politely redirect them back to Zendawa services."
+    "You are Zendawa Assistant, a helpful AI designed to support users with accurate and friendly information about Zendawa — "
+    "a Kenyan telepharmacy platform offering services like drug ordering, pharmacy onboarding, teleconsultations, and healthcare logistics.\n\n"
+    "If a question falls outside Zendawa’s scope (e.g., about cars, sports, or unrelated topics), kindly guide the user with a gentle message like:\n"
+    "“I'm here to help with questions related to Zendawa’s telepharmacy services. Feel free to ask anything about our platform or healthcare-related support.”\n\n"
+    f"To assist you better, here’s the most relevant information from Zendawa’s FAQ:\nQ: {matched_question}\nA: {matched_answer}"
 )
+
 
 
     prompt_messages = [
