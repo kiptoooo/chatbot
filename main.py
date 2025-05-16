@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
@@ -8,7 +9,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 from pathlib import Path
 import os, requests
 
+
+
 app = FastAPI()
+app.add_middleware(HTTPSRedirectMiddleware)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.add_middleware(
