@@ -63,12 +63,12 @@ async def chat(chat_req: ChatRequest):
         return {
             "reply": (
                 "🛒 To order drugs on Zendawa:\n"
-                "1. Go to our Marketplace: https://zendawa.africa/marketplace\n"
+                "1. Go to our Marketplace: https://zendawa.africa/\n"
                 "2. Browse or search for the medications you need.\n"
                 "3. Add your selections to the cart.\n"
                 "4. Proceed to checkout and enter delivery details.\n"
                 "5. Complete payment and confirm your order.\n\n"
-                "👉 Start ordering here: https://zendawa.africa/marketplace"
+                "👉 Start ordering here: https://zendawa.africa/"
             )
         }
 
