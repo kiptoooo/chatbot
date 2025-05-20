@@ -77,12 +77,12 @@ async def chat(chat_req: ChatRequest):
         return {
             "reply": (
                 "💬 To book a consultation with a doctor:\n"
-                "1. Visit: https://zendawa.africa/appointment\n"
+                "1. Visit: https://zendawa.africa/\n"
                 "2. Sign in or create a Zendawa account.\n"
                 "3. Select “Teleconsultation” and pick a specialty.\n"
                 "4. Choose a date, time, and consultation mode (chat/video).\n"
                 "5. Confirm and await your appointment link.\n\n"
-                "👉 Book a consultation now: https://zendawa.africa/appointment"
+                "👉 Book a consultation now: https://zendawa.africa/"
             )
         }
 
