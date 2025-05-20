@@ -4,4 +4,3 @@ requests
 python-multipart
 scikit-learn
 markdown
-boto3
