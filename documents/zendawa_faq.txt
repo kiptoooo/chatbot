@@ -348,3 +348,66 @@ A: Zendawa partners with licensed pharmacies and conducts quality audits to ensu
 
 Q: Can Zendawa be used in emergencies?
 A: Zendawa is for non-emergency services only. For urgent medical care, contact your local emergency provider.
+
+Q: When was Zendawa founded?
+A: Zendawa was founded in 2022.
+
+Q: Where is Zendawa headquartered?
+A: Zendawa's head office is located at 2nd Floor, Karakana Building, Old Nairobi Road, Nakuru, Kenya.
+
+Q: Who is the CEO of Zendawa?
+A: Wilfred Chege is the CEO of Zendawa.
+
+Q: What is Zendawa's mission?
+A: To transform African healthcare access through innovative digital platforms and reduce inefficiencies in pharmacy operations.
+
+Q: What is Zental.AI?
+A: Zental.AI is Zendawa’s automation system to reduce operational inefficiencies in pharmacies by improving task output.
+
+Q: What is Zendawa’s marketplace process?
+A: Orders placed are matched with nearby pharmacies using machine learning and then delivered by Zendawa’s courier partners.
+
+Q: What services does Zendawa offer to pharmacies?
+A: Digital store setup, inventory management, working capital access, product onboarding, and performance analytics.
+
+Q: What services does Zendawa offer to clinicians?
+A: Secure telemedicine suite for virtual consultations, appointment management, and patient data sharing.
+
+Q: What departments are listed on Zendawa?
+A: Clinicians, Dermatologists, Gynecologists, Orthopedic Surgeons, Pediatricians, Physicians, and Urologists.
+
+Q: Does Zendawa support healthcare product onboarding?
+A: Yes, pharmacies can onboard products not yet listed using a Pharmacy Product Onboarding Form.
+
+Q: What payment methods are accepted?
+A: Visa, Mastercard, M-Pesa (mobile money), bank transfers.
+
+Q: What languages are supported on Zendawa?
+A: English and Swahili.
+
+Q: What is Zendawa's return policy?
+A: Products can be returned within 48 hours if unopened and with a valid receipt.
+
+Q: What are Zendawa’s achievements and partnerships?
+A: Partnered with Microsoft, Visa Fintech Accelerator, UK-Kenya Tech Hub, and part of the Paper Plane 2025 Cohort.
+
+Q: Does Zendawa operate outside Kenya?
+A: Currently only in Kenya, but expansion plans are in place.
+
+Q: How many pharmacies are on the platform?
+A: Zendawa has integrated over 820 pharmacies.
+
+Q: How many monthly users does Zendawa serve?
+A: Over 8,200 active users.
+
+Q: Can Zendawa be used in emergencies?
+A: No. Zendawa is designed for non-emergency use only.
+
+Q: What is the Zendawa Resource Library?
+A: It contains insights on Africa’s healthcare renewal, health systems, and digital medicine.
+
+Q: How does Zendawa ensure medicine quality?
+A: Through partnerships with licensed pharmacies and routine quality audits.
+
+Q: What awards or recognitions has Zendawa received?
+A: Finalist at the Africa Tech Festival, selected for the Africa Healthcare Innovation Fellowship 2025.
