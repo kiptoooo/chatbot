@@ -86,11 +86,30 @@ async def chat(chat_req: ChatRequest):
             )
         }
 
-    # ——— Otherwise, your existing FAQ + LLM logic —————————
-    # TF-IDF similarity lookup
+    # ——— Handle Known Key Staff ——————————————————————
+    if any(name in low for name in ["achoka", "chege", "vincent chebon"]):
+        name_responses = {
+            "achoka": "Dr. Victor Achoka is a co-founder of Zendawa and a licensed pharmacist with training in quality control and business leadership.",
+            "chege": "Wilfred Chege is the CEO and co-founder of Zendawa, leading the mission to transform healthcare access in Africa.",
+            "vincent chebon": "Vincent Chebon is the Chief Technology Officer at Zendawa, driving technical innovation and product development."
+        }
+        for name in name_responses:
+            if name in low:
+                return {"reply": name_responses[name]}
+
+    # ——— Otherwise, use FAQ + LLM fallback ——————————————
     user_vector = vectorizer.transform([user_msg])
     sims = cosine_similarity(user_vector, question_vectors)[0]
     best_idx = int(sims.argmax())
+
+    if sims[best_idx] < 0.3:
+        return {
+            "reply": (
+                "I'm here to help with Zendawa’s telepharmacy services. "
+                "Please ask about consultations, drug ordering, pharmacy onboarding, or healthcare-related support."
+            )
+        }
+
     matched_q = questions[best_idx]
     matched_a = answers[best_idx]
 
@@ -116,8 +135,7 @@ async def chat(chat_req: ChatRequest):
         response = requests.post("https://api.together.xyz/v1/chat/completions", json=payload, headers=headers)
         response.raise_for_status()
         data = response.json()
-        reply = data.get("choices", [{}])[0].get("message", {}).get("content",
-                      "Sorry, I don't have that info.")
+        reply = data.get("choices", [{}])[0].get("message", {}).get("content", "Sorry, I don't have that info.")
         return {"reply": reply}
     except Exception as e:
         print("❌ Error:", e)

@@ -1,413 +1,114 @@
-Q: What is zendawa?
-A: Zendawa is a telepharmacy and ecommerce platform that connects patients with pharmacies, clinicians, and healthcare providers.
-
-Q: How to order?
-A: To order, browse our products, add them to your cart, and proceed with the checkout process.
-
-Q: Delivery time?
-A: Delivery usually takes between 1-3 business days, depending on your location.
-
-Q: Who are you?
-A: I am zendawa chatbot.
-
-Q: Do you have any paracetamol?
-A: Yes we have panadol extra which is taken twice a day
-
-Q: Hello?
-A: Hello! How can I assist you today?
-
-Q: Hello?
-A: Hey! What can I do for you?
-
-Q: Hello?
-A: Hi there!
-
-Q: What is your name?
-A: Hello! I am Zendawa chatbot.How can i assist you
-
-Q: What is zendawa?
-A: Zendawa is an online marketplace connecting buyers and sellers in Africa.
-
-Q: What is zendawa?
-A: Zendawa.Africa is a platform for e-commerce and digital services.
-
-Q: What is zendawa?
-A: We are a leading marketplace for businesses and consumers in Africa.
-
-Q: How to create an account?
-A: You can sign up on our website by clicking on
-
-Q: How to create an account?
-A: .
-
-Q: How to create an account?
-A: To create an account, visit the signup page and fill in the required details.
-
-Q: How to create an account?
-A: Simply go to
-
-Q: How to create an account?
-A: , enter your details, and follow the verification steps.
-
-Q: Who is ceo of zendawa?
-A: The CEO of zendawa is Wilfred Chege
-
-Q: How to reset password?
-A: Click
-
-Q: How to reset password?
-A: on the login page and follow the instructions.
-
-Q: How to reset password?
-A: Go to settings, select
-
-Q: How to reset password?
-A: , and follow the steps.
-
-Q: How to reset password?
-A: Reset your password by clicking the
-
-Q: How to reset password?
-A: link and checking your email.
-
-Q: How to place an order?
-A: Browse products, add to cart, and proceed to checkout.
-
-Q: How to place an order?
-A: Find the item you want, click
-
-Q: How to place an order?
-A: , and complete payment.
-
-Q: How to place an order?
-A: Select your items, go to checkout, and follow the payment steps.
-
-Q: Payment methods accepted?
-A: We accept credit cards, mobile money, and bank transfers.
-
-Q: Payment methods accepted?
-A: You can pay using Visa, Mastercard, and mobile wallets.
-
-Q: Payment methods accepted?
-A: Our payment options include online banking, mobile payments, and credit cards.
-
-Q: How to track my order?
-A: Go to
-
-Q: How to track my order?
-A: and check the status of your order.
-
-Q: How to track my order?
-A: You can track your order in your account under
-
-Q: How to track my order?
-A: .
-
-Q: How to track my order?
-A: Visit your profile, select
-
-Q: How to track my order?
-A: , and view the tracking details.
-
-Q: How to contact customer support?
-A: Reach us via live chat, email, or our support hotline.
-
-Q: How to contact customer support?
-A: You can contact support through the
-
-Q: How to contact customer support?
-A: section on our website.
-
-Q: How to contact customer support?
-A: Send us a message through our contact page or call our support team.
-
-Q: How to return a product?
-A: Go to
-
-Q: How to return a product?
-A: , select the item, and request a return.
-
-Q: How to return a product?
-A: You can return an item by visiting your order history and choosing
-
-Q: How to return a product?
-A: .
-
-Q: How to return a product?
-A: Check our return policy and follow the steps in your order details.
-
-Q: How long does shipping take?
-A: Shipping time depends on your location, usually 3-7 business days.
-
-Q: How long does shipping take?
-A: Most orders arrive within 3 to 7 days depending on the shipping method.
-
-Q: How long does shipping take?
-A: Estimated delivery time is shown at checkout based on your region.
-
-Q: What is zendawa.africa?
-A: Zendawa.Africa is a health-tech startup based in Nakuru, Kenya, providing digital solutions for pharmacies and medical practitioners.
-
-Q: What is zendawa.africa?
-A: Zendawa.Africa offers a digital platform enabling neighborhood pharmacies to sell online and provide telemedicine services.
-
-Q: What is zendawa.africa?
-A: We are a technology company focused on enhancing healthcare access through digital innovation.
-
-Q: How does zendawa's marketplace work?
-A: Our marketplace allows users to order prescription and non-prescription pharmaceutical products, which are then matched to the nearest pharmacy for delivery.
-
-Q: How does zendawa's marketplace work?
-A: Users place orders on our platform, and we connect them with local pharmacies for fulfillment and delivery.
-
-Q: How does zendawa's marketplace work?
-A: Zendawa uses machine learning to match customer orders with the nearest pharmacy stocking the products.
-
-Q: What services does zendawa offer to pharmacies?
-A: We provide pharmacies with a digital suite for managing sales, inventory, and accessing working capital.
-
-Q: What services does zendawa offer to pharmacies?
-A: Our platform offers tools for online sales, inventory management, and financial services for pharmacies.
-
-Q: What services does zendawa offer to pharmacies?
-A: Zendawa supports pharmacies with business management tools and access to credit through our partners.
-
-Q: How can medical practitioners use zendawa?
-A: Medical practitioners can use our telemedicine suite to provide remote consultations and manage appointments.
-
-Q: How can medical practitioners use zendawa?
-A: Our platform enables doctors to offer telehealth services and share medical records securely.
-
-Q: How can medical practitioners use zendawa?
-A: Zendawa provides tools for virtual consultations and patient data management for healthcare providers.
-
-Q: Is zendawa available outside kenya?
-A: Currently, Zendawa operates primarily in Kenya, but we plan to expand to other regions in the future.
-
-Q: Is zendawa available outside kenya?
-A: Our services are focused in Kenya at the moment, with expansion plans underway.
-
-Q: Is zendawa available outside kenya?
-A: Zendawa is working towards offering services in additional countries soon.
-
-Q: How secure is patient data on zendawa?
-A: We prioritize patient data security with end-to-end encryption and strict privacy policies.
-
-Q: How secure is patient data on zendawa?
-A: Zendawa employs advanced security measures to protect all user information.
-
-Q: How secure is patient data on zendawa?
-A: Your data is safeguarded using industry-standard encryption and security protocols.
-
-Q: Can i schedule in-person appointments through zendawa?
-A: Yes, our platform allows patients to book both virtual and in-person appointments with medical practitioners.
-
-Q: Can i schedule in-person appointments through zendawa?
-A: Zendawa facilitates scheduling for various types of medical consultations.
-
-Q: Can i schedule in-person appointments through zendawa?
-A: You can choose the appointment type that suits your needs on our platform.
-
-Q: What is zendawa's telemedicine service?
-A: Our telemedicine service enables remote medical consultations via our digital platform.
-
-Q: What is zendawa's telemedicine service?
-A: Zendawa allows patients to consult with doctors online for various health concerns.
-
-Q: What is zendawa's telemedicine service?
-A: We provide a secure environment for virtual healthcare consultations.
-
-Q: How do pharmacies access working capital through zendawa?
-A: We use AI-driven credit scoring to help pharmacies access loans from our lending partners.
-
-Q: How do pharmacies access working capital through zendawa?
-A: Pharmacies can apply for working capital directly through our platform, with funds credited to their e-wallet upon approval.
-
-Q: How do pharmacies access working capital through zendawa?
-A: Zendawa facilitates financial support for pharmacies based on their business data.
-
-Q: What is zendawa's appointment management feature?
-A: Our appointment management system helps medical practitioners schedule and manage patient appointments efficiently.
-
-Q: What is zendawa's appointment management feature?
-A: Zendawa offers tools for doctors to organize their consultation schedules and patient bookings.
-
-Q: What is zendawa's appointment management feature?
-A: Practitioners can oversee their appointments seamlessly using our digital suite.
-
-Q: How does zendawa ensure the quality of medicines?
-A: We partner with licensed pharmacies to ensure all medicines sold through our platform are authentic and safe.
-
-Q: How does zendawa ensure the quality of medicines?
-A: Zendawa verifies the credentials of all pharmacy partners to maintain high-quality standards.
-
-Q: How does zendawa ensure the quality of medicines?
-A: Our platform is committed to providing only genuine pharmaceutical products.
-
-Q: Can i use zendawa for emergency medical situations?
-A: Zendawa is designed for non-emergency consultations and pharmaceutical orders; please contact emergency services for urgent medical needs.
-
-Q: How do i become a partner pharmacy with zendawa?
-A: Pharmacies can apply to join our network by filling out the partnership form on our website.
-
-Q: What is zendawa's data sharing feature?
-A: Our platform allows consensual sharing of medical records among authorized practitioners to enhance patient care.
-
-Q: How does zendawa handle prescriptions?
-A: Users can upload their prescriptions on our platform, which are then verified and processed by partner pharmacies.
-
-Q: What are zendawa's operating hours?
-A: Our platform operates 24/7, though individual pharmacy and practitioner availability may vary.
-
-Q: What countries does zendawa operate in?
-A: Currently Zendawa primarily operates in Kenya with plans for expansion.
-
-Q: What's zendawa's prescription policy?
-A: All prescription medications require valid doctor authorization.
-
-Q: Does zendawa offer delivery tracking?
-A: Yes, real-time tracking is available through our mobile app.
-
-Q: Can i consult a doctor via zendawa?
-A: Yes, we offer both video and chat consultations with licensed practitioners.
-
-Q: What languages does zendawa support?
-A: We currently support English and Swahili.
-
-Q: How does zendawa verify pharmacies?
-A: We conduct thorough license checks and quality audits for all partners.
-
-Q: What's zendawa's refund policy?
-A: We offer 48-hour returns for unopened medications with valid receipt.
-
-Q: Does zendawa sell medical equipment?
-A: Yes, we offer various home medical equipment through partner pharmacies.
 
 Q: What is Zendawa?
-A: Zendawa is a health-tech start-up based in Nakuru, Kenya. It provides digital healthcare solutions including pharmacy management, telemedicine, and healthcare logistics.
+A: Zendawa is a telepharmacy and e-commerce platform connecting patients with pharmacies, clinicians, and healthcare providers. It is a health-tech startup based in Nakuru, Kenya, founded in 2022.
 
-Q: What services does Zendawa offer?
-A: Zendawa offers a wide range of services including telemedicine, digital appointment management, working capital access, digital pharmacy suite, product onboarding, and data sharing tools for practitioners.
+Q: Who is the CEO of Zendawa?
+A: Wilfred Chege is the CEO and Co-founder of Zendawa.
 
-Q: How does Zendawa's end-user marketplace work?
-A: Zendawa provides a platform where patients can order prescription and non-prescription products. Orders are matched using machine learning to the nearest pharmacy, and delivered through partner couriers.
+Q: Who are the co-founders of Zendawa?
+A: Zendawa was co-founded by Wilfred Chege and Dr. Victor Achoka.
 
-Q: How do pharmacies access working capital on Zendawa?
-A: Zendawa uses AI-driven credit scoring based on pharmacy data to help them access loans through lending partners.
+Q: Who is the CTO of Zendawa?
+A: Vincent Chebon serves as the Chief Technology Officer (CTO).
 
-Q: How does Zendawa help with inventory and cash flow management?
-A: Pharmacies using Zendawa's suite can track online/offline sales, monitor stock levels, and manage financial performance efficiently.
+Q: Who is the CFO of Zendawa?
+A: Phylis Mageka is the Chief Financial Officer.
 
-Q: What is Zendawa's telemedicine feature?
-A: Medical practitioners use Zendawa to provide remote consultations, share records, and manage virtual appointments securely.
-
-Q: How does appointment booking work on Zendawa?
-A: Patients can book in-person or virtual consultations directly from their homes, and practitioners manage their schedule via Zendawa's suite.
-
-Q: Can I return a product ordered via Zendawa?
-A: Yes. Zendawa allows product returns based on the return policy outlined in your order. Check your profile for the return process.
-
-Q: Who can partner with Zendawa?
-A: Pharmacies, medical practitioners, and businesses interested in healthcare collaboration can join Zendawa by filling out a partnership form.
-
-Q: What is the Pharmacy Product Onboarding Form?
-A: This form allows pharmacies to list unique products not already available on the platform, helping them expand reach and product variety.
-
-Q: How do medical practitioners benefit from Zendawa?
-A: Practitioners use Zendawa to manage patient data, book appointments, offer telemedicine services, and collaborate with other healthcare providers.
-
-Q: Is Zendawa available outside Kenya?
-A: Currently, Zendawa operates primarily in Kenya but plans to expand to other regions soon.
-
-Q: How secure is patient data on Zendawa?
-A: Zendawa prioritizes data privacy and uses end-to-end encryption and secure systems to protect all patient and pharmacy data.
+Q: What is Zental.AI?
+A: Zental.AI is Zendawa's initiative to automate pharmacy operations, reduce inefficiencies, and improve output.
 
 Q: Where is Zendawa located?
-A: 2nd floor Karakana Building, Nakuru, Kenya.
+A: 2nd Floor, Karakana Building, Old Nairobi Road, Nakuru, Kenya.
 
 Q: What is Zendawa’s mission?
 A: To transform African healthcare access through innovative digital platforms and reduce inefficiencies in pharmacy operations.
 
-Q: How can I contact Zendawa?
-A: Email: info@zendawa.africa | Phone: 0742782395, 0709605551 | Website: https://zendawa.africa
+Q: How to order?
+A: Browse our products, add them to your cart, and proceed with the checkout process.
 
-Q: What departments are listed on Zendawa?
-A: Departments include Clinicians, Dermatologists, Gynecologists, Orthopedic Surgeons, Pediatricians, Physicians, and Urologists.
+Q: How to create an account?
+A: Visit the signup page on our website, enter your details, and follow the verification steps.
 
-Q: What is Zendawa's approach to data sharing?
-A: Zendawa allows consensual sharing of medical records among healthcare providers to ensure collaborative and informed care.
+Q: How to reset password?
+A: Click the "Forgot Password" link on the login page and follow the instructions to reset via email.
 
-Q: What kind of content is in Zendawa's Resource Library?
-A: The Resource Library includes topics like Africa’s healthcare renewal, health systems, and the future of telemedicine.
+Q: How to place an order?
+A: Select your items, add to cart, and complete the checkout and payment process.
 
-Q: What is Zental.AI by Zendawa?
-A: Zental.AI is Zendawa’s initiative to reduce operational inefficiencies in pharmacies by automating tasks and improving output.
+Q: Payment methods accepted?
+A: We accept Visa, Mastercard, M-Pesa, mobile money, and bank transfers.
 
-Q: How does Zendawa ensure medicine quality?
-A: Zendawa partners with licensed pharmacies and conducts quality audits to ensure authenticity and safety of medicines.
+Q: How to track my order?
+A: Log in to your profile and check order status under your order history.
 
-Q: Can Zendawa be used in emergencies?
-A: Zendawa is for non-emergency services only. For urgent medical care, contact your local emergency provider.
+Q: How to contact customer support?
+A: Reach us via live chat, email (info@zendawa.africa), or call 0742782395 / 0709605551.
 
-Q: When was Zendawa founded?
-A: Zendawa was founded in 2022.
+Q: How to return a product?
+A: Visit your order history, select the item, and follow the return process. Products must be unopened with a valid receipt and returned within 48 hours.
 
-Q: Where is Zendawa headquartered?
-A: Zendawa's head office is located at 2nd Floor, Karakana Building, Old Nairobi Road, Nakuru, Kenya.
+Q: How long does shipping take?
+A: Delivery takes 1-3 business days depending on your location.
 
-Q: Who is the CEO of Zendawa?
-A: Wilfred Chege is the CEO of Zendawa.
+Q: Is Zendawa available outside Kenya?
+A: Zendawa currently operates in Kenya, with plans to expand regionally.
 
-Q: What is Zendawa's mission?
-A: To transform African healthcare access through innovative digital platforms and reduce inefficiencies in pharmacy operations.
+Q: Can I consult a doctor via Zendawa?
+A: Yes, video and chat consultations with licensed practitioners are available.
 
-Q: What is Zental.AI?
-A: Zental.AI is Zendawa’s automation system to reduce operational inefficiencies in pharmacies by improving task output.
+Q: Can I schedule in-person appointments?
+A: Yes, Zendawa supports both virtual and in-person consultations.
 
-Q: What is Zendawa’s marketplace process?
-A: Orders placed are matched with nearby pharmacies using machine learning and then delivered by Zendawa’s courier partners.
+Q: How does Zendawa’s telemedicine service work?
+A: Practitioners offer secure remote consultations, manage appointments, and share medical records securely.
 
 Q: What services does Zendawa offer to pharmacies?
-A: Digital store setup, inventory management, working capital access, product onboarding, and performance analytics.
+A: Zendawa provides digital store setup, inventory tracking, working capital access, product onboarding, and analytics tools.
 
-Q: What services does Zendawa offer to clinicians?
-A: Secure telemedicine suite for virtual consultations, appointment management, and patient data sharing.
+Q: How do pharmacies access working capital?
+A: Zendawa uses AI-based credit scoring to facilitate loans through lending partners.
+
+Q: How do pharmacies onboard products?
+A: Pharmacies fill a Product Onboarding Form to list unique items on the platform.
+
+Q: How does Zendawa verify pharmacies?
+A: By conducting license checks and regular quality audits.
+
+Q: How does Zendawa ensure medicine quality?
+A: All medicines are sourced from licensed pharmacies and verified for authenticity.
+
+Q: Can Zendawa be used in emergencies?
+A: No. Zendawa is for non-emergency medical needs only.
 
 Q: What departments are listed on Zendawa?
 A: Clinicians, Dermatologists, Gynecologists, Orthopedic Surgeons, Pediatricians, Physicians, and Urologists.
 
-Q: Does Zendawa support healthcare product onboarding?
-A: Yes, pharmacies can onboard products not yet listed using a Pharmacy Product Onboarding Form.
+Q: How secure is patient data on Zendawa?
+A: Patient data is protected with end-to-end encryption and industry-standard privacy protocols.
 
-Q: What payment methods are accepted?
-A: Visa, Mastercard, M-Pesa (mobile money), bank transfers.
-
-Q: What languages are supported on Zendawa?
-A: English and Swahili.
-
-Q: What is Zendawa's return policy?
-A: Products can be returned within 48 hours if unopened and with a valid receipt.
-
-Q: What are Zendawa’s achievements and partnerships?
-A: Partnered with Microsoft, Visa Fintech Accelerator, UK-Kenya Tech Hub, and part of the Paper Plane 2025 Cohort.
-
-Q: Does Zendawa operate outside Kenya?
-A: Currently only in Kenya, but expansion plans are in place.
-
-Q: How many pharmacies are on the platform?
-A: Zendawa has integrated over 820 pharmacies.
-
-Q: How many monthly users does Zendawa serve?
-A: Over 8,200 active users.
-
-Q: Can Zendawa be used in emergencies?
-A: No. Zendawa is designed for non-emergency use only.
+Q: How does Zendawa handle prescriptions?
+A: Users upload prescriptions, which are verified and fulfilled by partner pharmacies.
 
 Q: What is the Zendawa Resource Library?
-A: It contains insights on Africa’s healthcare renewal, health systems, and digital medicine.
+A: A collection of content on African healthcare, telemedicine, and digital health trends.
 
-Q: How does Zendawa ensure medicine quality?
-A: Through partnerships with licensed pharmacies and routine quality audits.
+Q: What are Zendawa’s achievements?
+A: Zendawa has partnered with Microsoft, Visa Fintech Accelerator, and UK-Kenya Tech Hub. It was a finalist in the Africa Tech Festival and part of the Africa Healthcare Innovation Fellowship 2025.
 
-Q: What awards or recognitions has Zendawa received?
-A: Finalist at the Africa Tech Festival, selected for the Africa Healthcare Innovation Fellowship 2025.
+Q: How many pharmacies and users are on the platform?
+A: Over 820 pharmacies and more than 8,200 monthly active users.
+
+Q: What languages does Zendawa support?
+A: English and Swahili.
+
+Q: Who can partner with Zendawa?
+A: Pharmacies, healthcare providers, and related businesses.
+
+Q: What is your name?
+A: I am the Zendawa chatbot. How can I assist you?
+
+Q: Hello?
+A: Hi there! How can I help you today?
+
+Q: Do you have any paracetamol?
+A: Yes, we have Panadol Extra. It is typically taken twice a day. Please consult your doctor for exact dosage.
